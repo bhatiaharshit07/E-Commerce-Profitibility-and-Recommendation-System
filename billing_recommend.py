@@ -1,9 +1,15 @@
 import time as tm,tkinter as tk,pandas as pd,matplotlib.pyplot as plt
-from pandas import np
+import numpy as np
 import os
 from mlxtend.frequent_patterns import apriori
 from mlxtend.preprocessing import TransactionEncoder    #object for apriori
 from PIL import Image as IMG, ImageDraw     #for text to image
+
+BGCOLOR = '#6e77ac' #background colour
+BUTTONCOLOR ='#4ABDAC' #Button colour
+#BGCOLOR = 'green' #background colour
+#BUTTONCOLOR ='gray' #Button colour
+BGTEXTCOLOR = 'white' #background text colour
 
 filename='database.csv'
 columns=['Date','Time','Name','Mobile Number','Product','Total Amount']
@@ -30,7 +36,7 @@ def time():     #function to display date and time
         DT+=str(i)
         DT+='/'
     DT=DT[:len(DT)-1]
-    date=tk.Label(root,bg='green',text='Date:  '+DT+'\t\tTime:  '+str(q),bd=3)
+    date=tk.Label(root,bg=BGCOLOR,text='Date:  '+DT+'\t\tTime:  '+str(q),bd=3)
     date.grid(column=200,row=4)
 
 from tkinter import *
@@ -145,17 +151,17 @@ def addItem():      #add extra item to the bill
     priceF.to_csv('price_list.csv',index=False)
     Product+=str(productE.get())+','
     Price.append(priceE.get())
-    productE=tk.Label(root,bg='green',text=str(pro),relief='flat',width=50)
+    productE=tk.Label(root,bg=BGCOLOR,text=str(pro),relief='flat',width=50)
     productE.grid(column=40,row=row)
-    priceE=tk.Label(root,bg='green',text=str(pri),relief='flat')
+    priceE=tk.Label(root,bg=BGCOLOR,text=str(pri),relief='flat')
     priceE.grid(column=80,row=row)
-    quantityE=tk.Label(root,bg='green',text=str(qua),relief='flat')
+    quantityE=tk.Label(root,bg=BGCOLOR,text=str(qua),relief='flat')
     quantityE.grid(column=120,row=row)
     productE.destroy()
     priceE.destroy()
     quantityE.destroy()
 
-    SNo=tk.Label(root,bg='green',text=str(num))
+    SNo=tk.Label(root,bg=BGCOLOR,text=str(num))
     SNo.grid(column=5,row=row)
     productE=AutocompleteEntry(listP,root)
     productE.grid(column=40,row=row)
@@ -163,9 +169,9 @@ def addItem():      #add extra item to the bill
     priceE.grid(column=80,row=row)
     quantityE=tk.Entry(root,relief='flat')
     quantityE.grid(column=120,row=row)
-    amountE=tk.Label(root,bg='green',text=str(amo),relief='flat')
+    amountE=tk.Label(root,bg=BGCOLOR,text=str(amo),relief='flat')
     amountE.grid(column=200,row=row-1)
-    Total=tk.Label(root,bg='green',text="Total Amount:"+str(sum(totalAmount)),fg='Red')
+    Total=tk.Label(root,bg=BGCOLOR,text="Total Amount:"+str(sum(totalAmount)),fg='Red')
     Total.grid(column=120,row=row+1)
     time()
 def print_bill():
@@ -205,7 +211,7 @@ def Submit():
     fileD.to_csv(filename,index=False)
     #print(dataset)
     top=tk.Toplevel()
-    lab=tk.Label(top,text='Submitted Successfully!!!',font=('Arial',15),fg='green')
+    lab=tk.Label(top,text='Submitted Successfully!!!',font=('Arial',15),fg=BGCOLOR)
     lab.pack()
     top.mainloop()
 def recommend():
@@ -276,12 +282,12 @@ def recommend():
                     plt.yticks([])
                     plt.autoscale()
                 plt.show()
-                #label=tk.Label(roo,text=str(value[0])+'+'+str(value[1])+' = Rs.'+str(int(Rec_pric)),font=('Tahoma',30),fg='white',bg='black')
+                #label=tk.Label(roo,text=str(value[0])+'+'+str(value[1])+' = Rs.'+str(int(Rec_pric)),font=('Tahoma',30),fg=BGCOLOR,bg='black')
             
             except:
                   roo=tk.Tk()
                   roo.title('Offer for you...')
-                  label=tk.Label(roo,text='Something went wrong!!!',font=('Tahoma',30),fg='white',bg='black')
+                  label=tk.Label(roo,text='Something went wrong!!!',font=('Tahoma',30),fg=BGCOLOR,bg='black')
                   label.pack()
                   roo.mainloop()
             
@@ -297,15 +303,15 @@ lista=list(set(pd.read_csv('database.csv')['Name']))
 listP=list(set(pd.read_csv('price_list.csv')['Product']))
 listN=list(set([str(i) for i in pd.read_csv('database.csv')['Mobile Number']]))
 #title
-heading=tk.Label(root,text='Products billing',font=('Tahoma',30),fg='Yellow',bg='Black',bd=3)
+heading=tk.Label(root,text='Products billing',font=('Tahoma',30),fg='white',bg=BGCOLOR,bd=3)
 heading.grid(column=50,row=2)
 
 #customer Details
-nameL=tk.Label(root,bg='green',text='Name')
+nameL=tk.Label(root,bg=BGCOLOR,text='Name',fg=BGTEXTCOLOR)
 nameL.grid(column=2,row=4)
 nameE=AutocompleteEntry(lista,root)
 nameE.grid(column=40,row=4)
-NumberL=tk.Label(root,bg='green',text='Mobile Number')
+NumberL=tk.Label(root,bg=BGCOLOR,text='Mobile Number',fg=BGTEXTCOLOR)
 NumberL.grid(column=60,row=4)
 NumberE=AutocompleteEntry(listN,root)
 NumberE.grid(column=80,row=4)
@@ -314,19 +320,19 @@ NumberE.grid(column=80,row=4)
 time()
 
 #labeling for the product purchase details
-SNO=tk.Label(root,bg='green',text='SNo.')
+SNO=tk.Label(root,bg=BGCOLOR,text='SNo.',fg=BGTEXTCOLOR)
 SNO.grid(column=40,row=7)
-product=tk.Label(root,bg='green',text='Product')
+product=tk.Label(root,bg=BGCOLOR,text='Product',fg=BGTEXTCOLOR)
 product.grid(column=40,row=7)
-price=tk.Label(root,bg='green',text='Price')
+price=tk.Label(root,bg=BGCOLOR,text='Price',fg=BGTEXTCOLOR)
 price.grid(column=80,row=7)
-quantity=tk.Label(root,bg='green',text='Quantity')
+quantity=tk.Label(root,bg=BGCOLOR,text='Quantity',fg=BGTEXTCOLOR)
 quantity.grid(column=120,row=7)
-amount=tk.Label(root,bg='green',text='Amount')
+amount=tk.Label(root,bg=BGCOLOR,text='Amount',fg=BGTEXTCOLOR)
 amount.grid(column=200,row=7)
 
 #product that is purchased by customer to be entered by the 
-SNo=tk.Label(root,bg='green',text=str(num))
+SNo=tk.Label(root,bg=BGCOLOR,text=str(num))
 SNo.grid(column=5,row=9)
 productE=AutocompleteEntry(listP,root)
 productE.grid(column=40,row=9)
@@ -334,23 +340,23 @@ priceE=tk.Entry(root)
 priceE.grid(column=80,row=9)
 quantityE=tk.Entry(root)
 quantityE.grid(column=120,row=9)
-amountE=tk.Label(root,bg='green',relief='flat')
+amountE=tk.Label(root,bg=BGCOLOR,relief='flat',fg=BGTEXTCOLOR)
 amountE.grid(column=200,row=9)
 
-addButton=tk.Button(root,text='Add+',font=('Tahoma'),width=20,command=addItem,bg='gray',fg='Black',bd=5)
+addButton=tk.Button(root,text='Add+',font=('Tahoma'),width=20,command=addItem,bg=BUTTONCOLOR,fg='Black',bd=5)
 addButton.grid(column=200,row=30)
 
-SubmitButton=tk.Button(root,text='Submit',font=('Tahoma'),width=20,command=Submit,bg='gray',fg='Black',bd=5)
+SubmitButton=tk.Button(root,text='Submit',font=('Tahoma'),width=20,command=Submit,bg=BUTTONCOLOR,fg='Black',bd=5)
 SubmitButton.grid(column=200,row=32)
 
-PrintButton=tk.Button(root,text='Print Bill',font=('Tahoma'),width=20,command=print_bill,bg='gray',fg='Black',bd=5)
+PrintButton=tk.Button(root,text='Print Bill',font=('Tahoma'),width=20,command=print_bill,bg=BUTTONCOLOR,fg='Black',bd=5)
 PrintButton.grid(column=200,row=34)
 
-SubmitButton=tk.Button(root,text='Recommend',font=('Tahoma'),width=20,command=recommend,bg='gray',fg='Black',bd=5)
+SubmitButton=tk.Button(root,text='Recommend',font=('Tahoma'),width=20,command=recommend,bg=BUTTONCOLOR,fg='Black',bd=5)
 SubmitButton.grid(column=200,row=36)
 
-##Total=tk.Label(root,bg='green',text="Total Amount:"+str(sum(totalAmount)))
+##Total=tk.Label(root,bg=BGCOLOR,text="Total Amount:"+str(sum(totalAmount)))
 ##Total.grid(column=120,row=52)
-root.configure(background='green')
-root1.configure(background='green')
+root.configure(background=BGCOLOR)
+root1.configure(background=BGCOLOR)
 root1.mainloop()
