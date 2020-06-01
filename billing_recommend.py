@@ -10,6 +10,7 @@ BUTTONCOLOR ='#4ABDAC' #Button colour
 #BGCOLOR = 'green' #background colour
 #BUTTONCOLOR ='gray' #Button colour
 BGTEXTCOLOR = 'white' #background text colour
+BUTTONTEXTCOLOR = 'purple' #button text colour
 
 filename='database.csv'
 columns=['Date','Time','Name','Mobile Number','Product','Total Amount']
@@ -36,7 +37,7 @@ def time():     #function to display date and time
         DT+=str(i)
         DT+='/'
     DT=DT[:len(DT)-1]
-    date=tk.Label(root,bg=BGCOLOR,text='Date:  '+DT+'\t\tTime:  '+str(q),bd=3)
+    date=tk.Label(root,bg=BGCOLOR,text='Date:  '+DT+'\t\tTime:  '+str(q),bd=3,fg=BGTEXTCOLOR)
     date.grid(column=200,row=4)
 
 from tkinter import *
@@ -161,7 +162,7 @@ def addItem():      #add extra item to the bill
     priceE.destroy()
     quantityE.destroy()
 
-    SNo=tk.Label(root,bg=BGCOLOR,text=str(num))
+    SNo=tk.Label(root,bg=BGCOLOR,text=str(num),fg=BGTEXTCOLOR)
     SNo.grid(column=5,row=row)
     productE=AutocompleteEntry(listP,root)
     productE.grid(column=40,row=row)
@@ -169,9 +170,9 @@ def addItem():      #add extra item to the bill
     priceE.grid(column=80,row=row)
     quantityE=tk.Entry(root,relief='flat')
     quantityE.grid(column=120,row=row)
-    amountE=tk.Label(root,bg=BGCOLOR,text=str(amo),relief='flat')
+    amountE=tk.Label(root,bg=BGCOLOR,text=str(amo),relief='flat',fg=BGTEXTCOLOR)
     amountE.grid(column=200,row=row-1)
-    Total=tk.Label(root,bg=BGCOLOR,text="Total Amount:"+str(sum(totalAmount)),fg='Red')
+    Total=tk.Label(root,bg=BGCOLOR,text="Total Amount:"+str(sum(totalAmount)),fg=BGTEXTCOLOR)
     Total.grid(column=120,row=row+1)
     time()
 def print_bill():
@@ -303,7 +304,7 @@ lista=list(set(pd.read_csv('database.csv')['Name']))
 listP=list(set(pd.read_csv('price_list.csv')['Product']))
 listN=list(set([str(i) for i in pd.read_csv('database.csv')['Mobile Number']]))
 #title
-heading=tk.Label(root,text='Products billing',font=('Tahoma',30),fg='white',bg=BGCOLOR,bd=3)
+heading=tk.Label(root,text='Products billing',font=('sans-serif',30),fg='white',bg=BGCOLOR,bd=3)
 heading.grid(column=50,row=2)
 
 #customer Details
@@ -332,7 +333,7 @@ amount=tk.Label(root,bg=BGCOLOR,text='Amount',fg=BGTEXTCOLOR)
 amount.grid(column=200,row=7)
 
 #product that is purchased by customer to be entered by the 
-SNo=tk.Label(root,bg=BGCOLOR,text=str(num))
+SNo=tk.Label(root,bg=BGCOLOR,text=str(num),fg=BGTEXTCOLOR)
 SNo.grid(column=5,row=9)
 productE=AutocompleteEntry(listP,root)
 productE.grid(column=40,row=9)
@@ -343,16 +344,16 @@ quantityE.grid(column=120,row=9)
 amountE=tk.Label(root,bg=BGCOLOR,relief='flat',fg=BGTEXTCOLOR)
 amountE.grid(column=200,row=9)
 
-addButton=tk.Button(root,text='Add+',font=('Tahoma'),width=20,command=addItem,bg=BUTTONCOLOR,fg='Black',bd=5)
+addButton=tk.Button(root,text='Add+',font=('Tahoma'),width=20,command=addItem,bg=BUTTONCOLOR,fg=BUTTONTEXTCOLOR,bd=5)
 addButton.grid(column=200,row=30)
 
-SubmitButton=tk.Button(root,text='Submit',font=('Tahoma'),width=20,command=Submit,bg=BUTTONCOLOR,fg='Black',bd=5)
+SubmitButton=tk.Button(root,text='Submit',font=('Tahoma'),width=20,command=Submit,bg=BUTTONCOLOR,fg=BUTTONTEXTCOLOR,bd=5)
 SubmitButton.grid(column=200,row=32)
 
-PrintButton=tk.Button(root,text='Print Bill',font=('Tahoma'),width=20,command=print_bill,bg=BUTTONCOLOR,fg='Black',bd=5)
+PrintButton=tk.Button(root,text='Print Bill',font=('Tahoma'),width=20,command=print_bill,bg=BUTTONCOLOR,fg=BUTTONTEXTCOLOR,bd=5)
 PrintButton.grid(column=200,row=34)
 
-SubmitButton=tk.Button(root,text='Recommend',font=('Tahoma'),width=20,command=recommend,bg=BUTTONCOLOR,fg='Black',bd=5)
+SubmitButton=tk.Button(root,text='Recommend',font=('Tahoma'),width=20,command=recommend,bg=BUTTONCOLOR,fg=BUTTONTEXTCOLOR,bd=5)
 SubmitButton.grid(column=200,row=36)
 
 ##Total=tk.Label(root,bg=BGCOLOR,text="Total Amount:"+str(sum(totalAmount)))

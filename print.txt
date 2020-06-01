@@ -1,5 +1,7 @@
 		Innovate Yourself		
 		-----------------------		
-2020/5/9			23:35
+2020/6/2			03:45
 Product name	|Price
-Payable Amount:	0
+bread			32
+oats			75
+Payable Amount:	100.0
