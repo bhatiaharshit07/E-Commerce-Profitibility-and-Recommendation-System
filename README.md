@@ -3,10 +3,16 @@ This is a GUI based Real-time billing application and the recommendation system 
 ### Project Set Up and Installation
 1) Clone this repository<br>
 ```
-git clone `https://github.com/bhatiaharshit07/E-Commerce-Profitibility-and-Recommendation-System.git
+git clone https://github.com/bhatiaharshit07/E-Commerce-Profitibility-and-Recommendation-System.git
 ```
 2) Download required python modules
-
+  1) Numpy
+  2) Pandas
+  3) Matplotlib
+  4) Mlxtend
+  ```
+  pip install mlxtend
+  ```
 
 ### Demo
 1) Run the billing_recommend.py file. <br>
