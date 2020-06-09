@@ -3,7 +3,7 @@ This is a GUI based Real-time billing application and the recommendation system 
 ### Project Set Up and Installation
 1) Clone this repository<br>
 '''
-git clone https://github.com/bhatiaharshit07/E-Commerce-Profitibility-and-Recommendation-System.git
+git clone `https://github.com/bhatiaharshit07/E-Commerce-Profitibility-and-Recommendation-System.git
 '''
 2) Download required python modules
 
