@@ -11,6 +11,9 @@ git clone https://github.com/bhatiaharshit07/E-Commerce-Profitibility-and-Recomm
   3) Matplotlib
   4) Mlxtend
   ```
+  pip install numpy
+  pip install pandas
+  pip install matplotlib
   pip install mlxtend
   ```
 
