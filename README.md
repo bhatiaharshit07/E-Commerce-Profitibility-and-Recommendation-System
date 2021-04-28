@@ -9,12 +9,14 @@ git clone https://github.com/bhatiaharshit07/E-Commerce-Profitibility-and-Recomm
   1. Numpy
   2. Pandas
   3. Matplotlib
-  4. Mlxtend<br>
+  4. Mlxtend
+  5. Tkinter<br>
   ```
   pip install numpy
   pip install pandas
   pip install matplotlib
   pip install mlxtend
+  pip install tkinter
   ```
 
 ### Demo
